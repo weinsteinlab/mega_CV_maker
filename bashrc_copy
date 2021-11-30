@@ -1,0 +1,63 @@
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+ 
+export HISTFILESIZE="" HISTSIZE=""
+export HISTFILE="${HOME}/.bash_history.`hostname`"
+export HISTTIMEFORMAT="%d/%m/%y %T "
+ 
+export PATH=$PATH:/ccs/proj/bip109/summit/namd/NAMD_2.14_Linux-multicore-CUDA/Linux-POWER-g++
+export PATH=$PATH:/ccs/proj/bip109/summit/vmd/vmd-1.9.3/install_bin
+export PATH=$PATH:/ccs/proj/bip109/summit/vmd/vmd-1.9.3/plugins/OPENPOWER/bin/catdcd5.1
+export PATH=$PATH:/ccs/proj/bip109/summit/vmd/vmd-1.9.3/plugins/OPENPOWER/bin/cionize1.0
+source /ccs/proj/bip109/summit/gromacs/gromacs-2021.3/gromacs_install/bin/GMXRC.bash
+ 
+export PATH=$PATH:/ccs/proj/bip109/rclone-v1.51.0-linux-amd64
+export ACCOUNT=BIP109
+ 
+alias vmd_rhea="/ccs/proj/bip109/rhea/vmd-1.9.3/vmd_install/vmd"
+#alias catdcd="/ccs/proj/bip109/rhea/vmd-1.9.3/plugins/LINUXAMD64/bin/catdcd5.1/catdcd"
+alias catdcd="/ccs/proj/bip109/summit/vmd/vmd-1.9.3/plugins/OPENPOWER/bin/catdcd5.1/catdcd"
+export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
+ 
+alias ls='ls -GFh --color=auto'
+alias my_bkill="bjobs | tail -n +2 | cut -d ' ' -f1 | xargs -n1 bkill"
+alias top_job="bjobs | head -n2 | tail -n1 | awk '{print $1}' | xargs -n1 bjobs -l"
+ 
+#. /ccs/proj/bip109/spack/share/spack/setup-env.sh
+ 
+if [[ "$(hostname -s)" == *"rhea"* ]] || [[ "$(hostname -s)" == *"andes"* ]] ; then
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/ccs/proj/bip109/rhea/anaconda_2020_07/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/ccs/proj/bip109/rhea/anaconda_2020_07/etc/profile.d/conda.sh" ]; then
+            . "/ccs/proj/bip109/rhea/anaconda_2020_07/etc/profile.d/conda.sh"
+        else
+            export PATH="/ccs/proj/bip109/rhea/anaconda_2020_07/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
+else
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/ccs/proj/bip109/summit/anaconda/anaconda_2021_05/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/ccs/proj/bip109/summit/anaconda/anaconda_2021_05/etc/profile.d/conda.sh" ]; then
+            . "/ccs/proj/bip109/summit/anaconda/anaconda_2021_05/etc/profile.d/conda.sh"
+        else
+            export PATH="/ccs/proj/bip109/summit/anaconda/anaconda_2021_05/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
+fi
+ 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/ccs/home/des2037/my_lib/
