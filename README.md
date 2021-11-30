@@ -12,10 +12,15 @@ Finds conformations (actually distances indicative of the conformations) visted 
 2) If there is no lab environment with mdanalysis you might need to make your own with thee following commands:
 
 	cp ~/bashrc_copy ~/.bashrc
+	
 	source ~/.bashrc
+	
 	conda create -n md_analysis -y python=3.6
+	
 	conda activate md_analysis
+	
 	conda install -y -c conda-forge mdanalysis
+	
 If you get inconsistency warnings, I think we can cautiously ignore them. I have run the code without error despite these warnings.
 
 3) I need to update algorithm to look for the opposite (visited by NHL class but not visited by HL class).
