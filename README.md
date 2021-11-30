@@ -82,4 +82,4 @@ NOTE: The files are configured to run on andes, because it is free... The submit
 
 12) Go to https://jupyter.olcf.ornl.gov/
 
-13) Sign in. navigate to working directory. open Multi_post_analysis.ipynb to analyze output 
+13) Sign in. navigate to working directory. open Multi_post_analysis.ipynb and/or ranking.ipynb to analyze output 
