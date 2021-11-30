@@ -9,7 +9,7 @@ Finds conformations (actually distances indicative of the conformations) visted 
 ################################BUGS and TODO list################################
 1) For some reason every time I activate conda, it edits the paths in the bashrc, breaking them. So in submit.sh I copy a fresh bashrc every time I need to activate a conda environment. I put this extra bashrc_copy in this folder.
 
-2)If there is no lab environment with mdanalysis you might need to make your own with thee following commands:
+2) If there is no lab environment with mdanalysis you might need to make your own with thee following commands: \n
 	cp ~/bashrc_copy ~/.bashrc
 	source ~/.bashrc
 	conda create -n md_analysis -y python=3.6
