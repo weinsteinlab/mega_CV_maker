@@ -11,15 +11,11 @@ Finds conformations (actually distances indicative of the conformations) visted 
 
 2) If there is no lab environment with mdanalysis you might need to make your own with thee following commands:
 
-	cp ~/bashrc_copy ~/.bashrc
-	
-	source ~/.bashrc
-	
-	conda create -n md_analysis -y python=3.6
-	
-	conda activate md_analysis
-	
-	conda install -y -c conda-forge mdanalysis
+	- cp ~/bashrc_copy ~/.bashrc
+	- source ~/.bashrc
+	- conda create -n md_analysis -y python=3.6
+	- conda activate md_analysis
+	- conda install -y -c conda-forge mdanalysis
 	
 If you get inconsistency warnings, I think we can cautiously ignore them. I have run the code without error despite these warnings.
 
@@ -50,15 +46,10 @@ NOTE: The files are configured to run on andes, because it is free... The submit
 5) open python_scripts/step1.py. edit:
 
 	- the os.chdir() to the working directory
-	
 	- the DATA_DIR to the trajectory directory
-	
 	- NHL_trajes to list of names of ligands in class 1 (must be same as directory names in trajectories folder)
-	
 	- same with HL
-	
 	- start, end, and skip if you want to customize the frames used. I recommed making 'end' a few frames less than the end to make sure all trajectories have equal number of frames.
-	
 	- In the for loop:
 		'''
 		for lig in HL_trajes:
@@ -68,7 +59,6 @@ NOTE: The files are configured to run on andes, because it is free... The submit
 		        psf = DATA_DIR + lig + "/prot.psf"
 		'''
 		you will probably need to edit these lines to reflect your trajectory directory organization (and number of trajectories. NOTE: range() funtion is not inclusive of the end point!!!
-		
 	- same with NHL for loop
 
 6) open submit.sh, comment out the check.py line and uncomment the step1.py line. then run 'sbatch submit.sh'
