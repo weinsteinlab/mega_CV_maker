@@ -36,6 +36,7 @@ DONE 5) Should use Shana's residue definitions to decrease size of output
 
 
 ###############TO RUN###############################
+
 NOTE: The files are configured to run on andes, because it is free... The submit.sh must be edited to run on SUMMIT
 
 1) place trajectories in 'trajectories' directory.
@@ -47,11 +48,17 @@ NOTE: The files are configured to run on andes, because it is free... The submit
 4) sbatch submit.sh. Check the slurm file to make sure it ran without error and that it output the check.npy file in numpy_files folder
 
 5) open python_scripts/step1.py. edit:
+
 	- the os.chdir() to the working directory
+	
 	- the DATA_DIR to the trajectory directory
+	
 	- NHL_trajes to list of names of ligands in class 1 (must be same as directory names in trajectories folder)
+	
 	- same with HL
-	- start, end, and skip if you want to customize the frames used. I recommed making 'end' a few frames less than the end to make sure all trajectorieshave equal number of frames.
+	
+	- start, end, and skip if you want to customize the frames used. I recommed making 'end' a few frames less than the end to make sure all trajectories have equal number of frames.
+	
 	- In the for loop:
 		'''
 		for lig in HL_trajes:
@@ -61,6 +68,7 @@ NOTE: The files are configured to run on andes, because it is free... The submit
 		        psf = DATA_DIR + lig + "/prot.psf"
 		'''
 		you will probably need to edit these lines to reflect your trajectory directory organization (and number of trajectories. NOTE: range() funtion is not inclusive of the end point!!!
+		
 	- same with NHL for loop
 
 6) open submit.sh, comment out the check.py line and uncomment the step1.py line. then run 'sbatch submit.sh'
